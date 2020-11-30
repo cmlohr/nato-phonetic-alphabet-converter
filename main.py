@@ -9,9 +9,14 @@ data = pandas.read_csv("nato_phonetic_alphabet.csv")
 # same thing as above but shorter
 nato_alpha = {row.letter: row.code for (index, row) in data.iterrows()}
 
-user_input = input("Enter a word:\n> ").upper()
-code_list = [nato_alpha[letter] for letter in user_input]
-print(code_list)
+on = True
+while on:
+    user_input = input("Enter a word:\n> ").upper()
+    try:
+        code_list = [nato_alpha[letter] for letter in user_input]
+        print(code_list)
+    except KeyError:
+        print("Please only enter letters.")
 
 
 
